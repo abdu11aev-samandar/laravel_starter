@@ -63,9 +63,18 @@
                         {{ $applications->links() }}
 
                     @else
+
+                        @if(session()->has('error'))
+                            <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                                <p class="font-bold">Be Warned</p>
+                                <p>{{ session()->get('error') }}</p>
+                            </div>
+                        @endif
+
+
                         <!-- component -->
                         <div
-                            class='flex items-center justify-center'>
+                            class='flex items-center justify-center mt-5'>
                             <div class='w-full max-w-lg px-10 py-8 mx-auto bg-white rounded-lg shadow-xl'>
                                 <div class='max-w-md mx-auto space-y-6'>
                                     <form action="{{ route('application.store') }}" method="post"
