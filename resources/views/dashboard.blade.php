@@ -34,27 +34,59 @@
                                         </div>
                                     </div>
 
-                                    <div class="mt-4 mb-6">
-                                        <div class="mb-3 text-xl font-bold">{{ $application->subject }}</div>
-                                        <div class="text-sm text-neutral-600">{{ $application->message }}</div>
-                                    </div>
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <div class="mt-4 mb-6">
+                                                <div class="mb-3 text-xl font-bold">{{ $application->subject }}</div>
+                                                <div class="text-sm text-neutral-600">{{ $application->message }}</div>
+                                            </div>
 
-                                    <div>
-                                        <div class="flex items-center justify-between text-slate-500">
-                                            <div class="flex space-x-4 md:space-x-8">
-                                                <div
-                                                    class="flex cursor-pointer items-center transition hover:text-slate-600">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                         viewBox="0 0 24 24"
-                                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                        <path stroke-linecap="round"
-                                                              d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"/>
-                                                    </svg>
-                                                    <span>{{ $application->user->email }}</span>
+                                            <div>
+                                                <div class="flex items-center justify-between text-slate-500">
+                                                    <div class="flex space-x-4 md:space-x-8">
+                                                        <div
+                                                            class="flex cursor-pointer items-center transition hover:text-slate-600">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                 viewBox="0 0 24 24"
+                                                                 stroke-width="1.5" stroke="currentColor"
+                                                                 class="w-6 h-6">
+                                                                <path stroke-linecap="round"
+                                                                      d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"/>
+                                                            </svg>
+                                                            <span>{{ $application->user->email }}</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div>
+                                            <div
+                                                class="border m-6 p-6 rounded hover:bg-gray-50 transition cursor-pointer flex flex-col items-center">
+                                                @if(is_null($application->file_url))
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                             viewBox="0 0 24 24" stroke-width="1.5"
+                                                             stroke="currentColor" class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                  d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+                                                        </svg>
+                                                        No File
+                                                @else
+                                                    <a href="{{ asset('storage/'.$application->file_url) }}"
+                                                       target="_blank">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                             viewBox="0 0 24 24" stroke-width="1.5"
+                                                             stroke="currentColor"
+                                                             class="w-6 h-6">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                  d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>
+                                                        </svg>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                        </div>
                                     </div>
+
+
                                 </div>
 
                             </div>
