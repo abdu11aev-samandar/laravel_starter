@@ -63,13 +63,13 @@
                                             <div
                                                 class="border m-6 p-6 rounded hover:bg-gray-50 transition cursor-pointer flex flex-col items-center">
                                                 @if(is_null($application->file_url))
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                             viewBox="0 0 24 24" stroke-width="1.5"
-                                                             stroke="currentColor" class="w-6 h-6">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                  d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-                                                        </svg>
-                                                        No File
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                         viewBox="0 0 24 24" stroke-width="1.5"
+                                                         stroke="currentColor" class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                              d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+                                                    </svg>
+                                                    No File
                                                 @else
                                                     <a href="{{ asset('storage/'.$application->file_url) }}"
                                                        target="_blank">
@@ -87,8 +87,23 @@
                                     </div>
 
 
-                                </div>
+                                    @if($application->answer()->exists())
+                                        <div class="mt-5">
+                                            <hr class="mb-5">
+                                            <h3 class="mb-3 text-xl font-bold">Answer:</h3>
+                                            <p class="text-sm text-neutral-600">{{ $application->answer->body }}</p>
+                                        </div>
+                                    @else
+                                        <div class="flex justify-end">
+                                            <a href="{{ route('answers.create', ['application' => $application->id]) }}"
+                                               type="button"
+                                               class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                                Answer
+                                            </a>
+                                        </div>
+                                    @endif
 
+                                </div>
                             </div>
                         @endforeach
 
