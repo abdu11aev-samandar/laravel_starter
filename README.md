@@ -51,3 +51,7 @@ You may to contribute this project [Samandar Abdullayev](https://github.com/xkas
 ## License
 
 The Laravel project software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## .env
+- DB_HOST = mysql
+- MAIL_MAILER = log
